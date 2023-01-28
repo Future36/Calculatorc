@@ -1,4 +1,6 @@
-﻿#include <iostream>
+#include <iostream>
+#include <stdlib.h>
+#include <string>
 using namespace std;
 
 void generateFibonacci(int iterations) {
@@ -17,7 +19,8 @@ void generateFibonacci(int iterations) {
 }
 
 int main() {
-    double num1, num2, result;
+    string num1, num2;
+    double result, result1, result2; //кароче result1 и result2 это такие классные вещи, которые как бы num1 и num2, но int!!!
     char operation;
     int iterations;
     string exit;
@@ -25,10 +28,12 @@ int main() {
     while (true) {
         cout << "Enter the first number: ";
         cin >> num1;
+        result1 = std::stod(num1);
 
         while (true) {
             cout << "\nEnter the second number: ";
             cin >> num2;
+            result2 = std::stod(num2);
             cout << "Enter the operation (+, -, *, /, %, f): ";
                 cin >> operation;
             while (!(operation == '+' || operation == '-' || operation == '*' || operation == '/' || operation == '%' || operation == 'f')) {
@@ -36,7 +41,7 @@ int main() {
                 cin >> operation;
             }
 
-            if (num2 != 0 || operation != '/') {
+            if (result1 != 0 || operation != '/') {
                 break;
             }
             cout << "You can divide on zero";
@@ -44,19 +49,19 @@ int main() {
 
         switch (operation) {
         case '+':
-            result = num1 + num2;
+            result = result1 + result2;
             break;
         case '-':
-            result = num1 - num2;
+            result = result1 - result2;
             break;
         case '*':
-            result = num1 * num2;
+            result = result1 * result2;
             break;
         case '/':
-            result = num1 / num2;
+            result = result1 / result2;
             break;
         case '%':
-            result = (int)num1 % (int)num2;
+            result = (int)result1 % (int)result2;
             break;
         case 'f':
             while (true) {
@@ -75,10 +80,13 @@ int main() {
 
         cout << "Do you want continue? Yes/No : ";
         cin >> exit;
-        if (exit != "Yes") {
+        if (exit != "Yes" && exit != "yes") {
+            
             break;
         }
+            system("cls");
     }
 
     return 0;
 }
+
